@@ -1,6 +1,8 @@
 ////for start
 const start = document.getElementById('start')
-
+start.addEventListener('click', () => {
+  setTimeout(decrease, 1000)
+})
 ////for time
 const time = document.getElementById('cooldown')
 let cooldown = 10
