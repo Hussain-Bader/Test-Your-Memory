@@ -1,8 +1,11 @@
+////for start
+const start = document.getElementById('start')
+
 ////for time
-////for time
-let time = document.getElementById('cooldown')
+const time = document.getElementById('cooldown')
 let cooldown = 10
 time.textContent = cooldown
+
 function decrease() {
   cooldown--
   time.textContent = cooldown
@@ -12,7 +15,6 @@ function decrease() {
   }
 }
 
-setTimeout(decrease, 1000)
 ////for game
 
 ////for score
