@@ -25,7 +25,7 @@ This game test your memory limits
 ### The (main)
 
 page include (des)description,thats name Help , play to enter the game ,and Quit game to quit.
-I will use for main getElementById and addEventListener to move bettween them.Last, for Quit I learn How to close the page using (window.location.href = "goodbye.html").
+I will use for main getElementById and addEventListener to move bettween them.Last, for Quit I learn How to close the page using (window.close()).
 
 ### play
 
