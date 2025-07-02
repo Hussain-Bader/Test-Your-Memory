@@ -1,5 +1,18 @@
 ////for time
+////for time
+let time = document.getElementById('cooldown')
+let cooldown = 10
+time.textContent = cooldown
+function decrease() {
+  cooldown--
+  time.textContent = cooldown
+  if (cooldown > 0) {
+    console.log(cooldown)
+    setTimeout(decrease, 1000)
+  }
+}
 
+setTimeout(decrease, 1000)
 ////for game
 
 ////for score
