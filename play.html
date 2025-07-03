@@ -7,11 +7,40 @@
     <title>Game Window</title>
   </head>
   <body>
-    <label id="score">score:</label>
-    <output for="score" id="point"></output>
-    <label id="time">Time:</label>
-    <output for="time" id="cooldown"></output>
-    <button id="start">Start</button>
-    <button onclick="window.close()">Back</button>
+    <table border="2">
+      <tr>
+        <th>
+          <label id="score">score:</label>
+          <output for="score" id="point"></output>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <label id="time">Time:</label>
+          <output for="time" id="cooldown"></output>
+        </th>
+      </tr>
+    </table>
+    <div id="background">
+      <h3>TEST-YOUR-MEMORY</h3>
+      <div id="container">
+        <div id="box"></div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <br /><br />
+    <button
+      id="start"
+      style="font-size: 20px; border-radius: 20px; background-color: yellow"
+    >
+      Start
+    </button>
+    <button
+      style="font-size: 15px; border-radius: 20px; background-color: yellow"
+      onclick="window.close()"
+    >
+      Back
+    </button>
   </body>
 </html>

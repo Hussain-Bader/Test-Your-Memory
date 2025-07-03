@@ -1,8 +1,12 @@
 ////for start
 const start = document.getElementById('start')
-start.addEventListener('click', () => {
-  setTimeout(decrease, 1000)
-})
+start.addEventListener(
+  'click',
+  () => {
+    setTimeout(decrease, 1000)
+  },
+  { once: true }
+)
 ////for time
 const time = document.getElementById('cooldown')
 let cooldown = 10
@@ -19,6 +23,18 @@ function decrease() {
 
 ////for game
 
+const array = []
+for (let i = 0; i < 4; ++i) {
+  array.push(i)
+}
+console.log(array)
+
+const container = document.querySelector('#container')
+array.forEach((num) => {
+  const createBoxes = document.createElement('div')
+  createBoxes.setAttribute('class', 'box')
+  container.append(createBoxes)
+})
 ////for score
 const score = document.getElementById('point')
 let point = 0
