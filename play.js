@@ -59,3 +59,4 @@ function create() {
     add()
   }
 }
+function random() {}
