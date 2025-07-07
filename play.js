@@ -64,19 +64,29 @@ function create() {
     box.className = 'box'
     box.dataset.index = index
     box.dataset.image = image
-  })
-  ////front side
-  const front = document.createElement('div')
-  front.className = 'front'
-  const hiding = document.createElement('img')
-  hiding.src = 'hide.png'
-  front.appendChild(hide)
-  ////back side (imgae)
-  const back = document.createElement('div')
-  back.className = 'back'
-  const cardImg = document.createElement('img')
-  cardImg.src = image
-  back.appendChild(cardImg)
-}
 
+    ////front side
+    const front = document.createElement('div')
+    front.className = 'front'
+    const hiding = document.createElement('img')
+    hiding.src = 'hide.png'
+    front.appendChild(hide)
+    ////back side (imgae)
+    const back = document.createElement('div')
+    back.className = 'back'
+    const cardImg = document.createElement('img')
+    cardImg.src = image
+    back.appendChild(cardImg)
+
+    ////combine
+    box.appendChild(front)
+    box.appendChild(back)
+
+    //// add to dom
+    container.appendChild(box)
+
+    //// click
+    box.addEventListener('click', flipCardHandler)
+  })
+}
 window.onload = game()
