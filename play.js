@@ -65,6 +65,13 @@ function create() {
     box.dataset.index = index
     box.dataset.image = image
   })
+  ////front side
+  const front = document.createElement('div')
+  front.className = 'front'
+  const hiding = document.createElement('img')
+  hiding.src = 'hide.png'
+  front.appendChild(hide)
+  ////back side (imgae)
 }
 
 window.onload = game()
