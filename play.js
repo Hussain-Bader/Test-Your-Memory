@@ -72,6 +72,11 @@ function create() {
   hiding.src = 'hide.png'
   front.appendChild(hide)
   ////back side (imgae)
+  const back = document.createElement('div')
+  back.className = 'back'
+  const cardImg = document.createElement('img')
+  cardImg.src = image
+  back.appendChild(cardImg)
 }
 
 window.onload = game()
