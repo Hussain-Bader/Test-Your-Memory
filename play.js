@@ -1,4 +1,4 @@
-const img = ['cat.png', 'dog.png']
+const img = ['cat.png', 'dog.png', 'lion.png', 'bird.png']
 ////for start
 const start = document.getElementById('start')
 start.addEventListener(
@@ -23,26 +23,35 @@ function decrease() {
 }
 ////for score
 const score = document.getElementById('point')
-let point = 30
+let point = 0
 
 score.textContent = point
 ////for game
-let array = []
-let flipArray = []
-let sameArray = 0
-const TsameArray = 2
+let card = [...img, ...img]
+let flipCard = []
+let sameCard = 0
+const TsameCard = 2
+
 function game() {
+  card = [...img]
   create()
-  random()
+  random(card)
+}
+function random(card) {
+  for (let k = card.length - 1; k > 0; k--) {
+    const Random = Math.floor(Math.random() * (k + 1))
+    ;[card[k], card[Random]] = [card[Random], card[k]]
+  }
+  console.log(card)
 }
 function create() {
   for (let i = 0; i < 4; ++i) {
-    array.push(i)
+    card.push(i)
   }
-  console.log(array)
+  console.log(card)
   function add() {
     const container = document.querySelector('#container')
-    array.forEach((num) => {
+    card.forEach((num) => {
       const createBoxes = document.createElement('div')
 
       createBoxes.setAttribute('class', 'box')
@@ -53,10 +62,11 @@ function create() {
   if (point >= 10) {
     add()
   }
-  console.log(array)
+  console.log(card)
   if (point >= 30) {
     add()
     add()
   }
 }
-function random() {}
+
+window.onload = game()
