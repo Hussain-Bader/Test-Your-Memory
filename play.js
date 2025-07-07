@@ -23,14 +23,6 @@ start.addEventListener(
 const time = document.getElementById('cooldown')
 time.textContent = cooldown
 
-function decrease() {
-  cooldown--
-  time.textContent = cooldown
-  if (cooldown > 0) {
-    console.log(cooldown)
-    setTimeout(decrease, 1000)
-  }
-}
 ////for score
 const score = document.getElementById('point')
 
@@ -70,7 +62,7 @@ function create() {
     front.className = 'front'
     const hiding = document.createElement('img')
     hiding.src = 'hide.png'
-    front.appendChild(hide)
+    front.appendChild(hiding)
     ////back side (imgae)
     const back = document.createElement('div')
     back.className = 'back'
@@ -88,5 +80,14 @@ function create() {
     //// click
     box.addEventListener('click', flipCardHandler)
   })
+}
+function decrease() {
+  cooldown--
+  time.textContent = cooldown
+  if (cooldown <= 0) {
+    allShowed = false
+  } else {
+    setTimeout(decrease, 1000)
+  }
 }
 window.onload = game()
