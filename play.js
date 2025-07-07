@@ -1,4 +1,5 @@
-const img = ['cat.png', 'dog.png', 'lion.png', 'bird.png', 'hide.png']
+const img = ['cat.png', 'dog.png', 'lion.png', 'bird.png']
+const hide = 'hide.png'
 ////game state
 let cooldown = 10
 let point = 0
@@ -8,7 +9,7 @@ let sameCard = 0
 const TsameCard = 2
 let timer
 let allShowed = false
-let Active = false
+let active = false
 ////for start
 const start = document.getElementById('start')
 start.addEventListener(
@@ -41,9 +42,9 @@ function game() {
   point = 0
   sameCard = 0
   flipCard = []
-  card = [...img]
+  card = [...img, ...img]
   allShowed = true
-  Active = false
+  active = false
   container.innerHTML = ''
   random(card)
   create()
@@ -56,29 +57,6 @@ function random(card) {
   }
   console.log(card)
 }
-function create() {
-  for (let i = 0; i < 4; ++i) {
-    card.push(i)
-  }
-  console.log(card)
-  function add() {
-    const container = document.querySelector('#container')
-    card.forEach((num) => {
-      const createBoxes = document.createElement('div')
-
-      createBoxes.setAttribute('class', 'box')
-      return container.append(createBoxes)
-    })
-  }
-  add()
-  if (point >= 10) {
-    add()
-  }
-  console.log(card)
-  if (point >= 30) {
-    add()
-    add()
-  }
-}
+function create() {}
 
 window.onload = game()
