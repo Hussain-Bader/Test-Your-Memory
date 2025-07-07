@@ -57,6 +57,14 @@ function random(card) {
   }
   console.log(card)
 }
-function create() {}
+function create() {
+  card.forEach((image, index) => {
+    ////to create
+    const box = document.createElement('div')
+    box.className = 'box'
+    box.dataset.index = index
+    box.dataset.image = image
+  })
+}
 
 window.onload = game()
