@@ -1,4 +1,14 @@
-const img = ['cat.png', 'dog.png', 'lion.png', 'bird.png']
+const img = ['cat.png', 'dog.png', 'lion.png', 'bird.png', 'hide.png']
+////game state
+let cooldown = 10
+let point = 0
+let card = [...img]
+let flipCard = []
+let sameCard = 0
+const TsameCard = 2
+let timer
+let allShowed = false
+let Active = false
 ////for start
 const start = document.getElementById('start')
 start.addEventListener(
@@ -10,7 +20,6 @@ start.addEventListener(
 )
 ////for time
 const time = document.getElementById('cooldown')
-let cooldown = 10
 time.textContent = cooldown
 
 function decrease() {
@@ -23,19 +32,22 @@ function decrease() {
 }
 ////for score
 const score = document.getElementById('point')
-let point = 0
 
 score.textContent = point
 ////for game
-let card = [...img, ...img]
-let flipCard = []
-let sameCard = 0
-const TsameCard = 2
 
 function game() {
+  cooldown = 10
+  point = 0
+  sameCard = 0
+  flipCard = []
   card = [...img]
-  create()
+  allShowed = true
+  Active = false
+  container.innerHTML = ''
   random(card)
+  create()
+  showAll()
 }
 function random(card) {
   for (let k = card.length - 1; k > 0; k--) {
