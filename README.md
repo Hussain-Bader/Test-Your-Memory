@@ -16,7 +16,7 @@ This game test your memory limits
 
 ## Wire frames
 
-![image](Game.png)
+![image](/Game2.png)
 
 ---
 
@@ -24,7 +24,7 @@ This game test your memory limits
 
 ### The (main)
 
-page include (des)description,thats name Help , play to enter the game ,and Quit game to quit.
+page include play to enter the game ,and Quit game to quit.
 I will use for main getElementById and addEventListener to move bettween them.Last, for Quit I learn How to close the page using (window.close()).
 
 ### play
@@ -48,9 +48,3 @@ For timer I need variable called Timer and TimeSpeed .Also, I will use function 
 #### boxPictures
 
 I need array to set up the game.variable for the img , win , and hidePic. function to increase the size of the array ,and using sort() and math.random() to change the place of img , hide to hide the picture ,and more....
-
----
-
-### Help
-
-just html p to describe and button click Back.
