@@ -21,13 +21,7 @@ let allShowed = false
 let active = false
 ////for start
 const start = document.getElementById('start')
-start.addEventListener(
-  'click',
-  () => {
-    setTimeout(decrease, 1000)
-  },
-  { once: true }
-)
+
 ////for time
 const time = document.getElementById('cooldown')
 time.textContent = cooldown
@@ -44,7 +38,7 @@ function game() {
   sameCard = 0
   flipCard = []
   card = [...img, ...img]
-  allShowed = true
+  allShowed = false
   active = false
   container.innerHTML = ''
   random(card)
@@ -90,7 +84,7 @@ function create() {
     box.addEventListener('click', flipCardHandler)
   })
 }
-function showAll() {
+function showAll(seconds) {
   const boxes = document.querySelectorAll('.box')
 
   boxes.forEach((box) => box.classList.add('flipped'))
@@ -113,14 +107,64 @@ function showAll() {
     }
   }, 1000)
 }
+function startGameTimer() {
+  cooldown = 60
+  timer = setInterval(() => {
+    cooldown--
+    time.textContent = cooldown
+    if (cooldown <= 0) {
+      clearInterval(timer)
+      active = false
+      lert('Time up! Your score: ' + point)
+    }
+  }, 1000)
+}
+function flipCardHandler() {
+  if (
+    !active ||
+    this.classList.contains('flipped') ||
+    this.classList.contains('matched') ||
+    flipCard.length >= 2
+  ) {
+    return
+  }
 
-function decrease() {
-  cooldown--
-  time.textContent = cooldown
-  if (cooldown <= 0) {
-    allShowed = false
-  } else {
-    setTimeout(decrease, 1000)
+  this.classList.add('flipped')
+  flipCard.push(this)
+
+  if (flipCard.length === 2) {
+    const [card1, card2] = flipCard
+
+    if (card1.dataset.image === card2.dataset.image) {
+      card1.classList.add('matched')
+      card2.classList.add('matched')
+      flipCard = []
+      sameCard++
+      point += 5
+      score.textContent = point
+
+      if (sameCard === TsameCard) {
+        setTimeout(() => {
+          clearInterval(timer)
+          alert(`You won!`)
+        }, 500)
+      }
+    } else {
+      setTimeout(() => {
+        card1.classList.remove('flipped')
+        card2.classList.remove('flipped')
+        flipCard = []
+      }, 1000)
+    }
   }
 }
-window.onload = game()
+start.addEventListener(
+  'click',
+  () => {
+    game()
+  },
+  { once: true }
+)
+window.onload = () => {
+  container.innerHTML = ''
+}
