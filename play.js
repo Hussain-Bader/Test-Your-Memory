@@ -1,4 +1,13 @@
-const img = ['cat.png', 'dog.png', 'lion.png', 'bird.png']
+const img = [
+  'cat.png',
+  'dog.png',
+  'lion.png',
+  'bird.png',
+  'fox.png',
+  'fish.png',
+  'tiger.png',
+  'elephant.png'
+]
 const hide = 'hide.png'
 ////game state
 let cooldown = 10
@@ -6,7 +15,7 @@ let point = 0
 let card = [...img]
 let flipCard = []
 let sameCard = 0
-const TsameCard = 2
+const TsameCard = 8
 let timer
 let allShowed = false
 let active = false
@@ -40,7 +49,7 @@ function game() {
   container.innerHTML = ''
   random(card)
   create()
-  showAll()
+  showAll(10)
 }
 function random(card) {
   for (let k = card.length - 1; k > 0; k--) {
@@ -81,6 +90,30 @@ function create() {
     box.addEventListener('click', flipCardHandler)
   })
 }
+function showAll() {
+  const boxes = document.querySelectorAll('.box')
+
+  boxes.forEach((box) => box.classList.add('flipped'))
+
+  let remaining = seconds
+  time.textContent = remaining
+
+  const countdown = setInterval(() => {
+    remaining--
+    time.textContent = remaining
+
+    if (remaining <= 0) {
+      clearInterval(countdown)
+
+      boxes.forEach((box) => box.classList.remove('flipped'))
+
+      active = true
+
+      startGameTimer()
+    }
+  }, 1000)
+}
+
 function decrease() {
   cooldown--
   time.textContent = cooldown
